@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item1"
+          android:title="@string/item1"
+          android:icon="@drawable/icon" />
+    <item android:id="@+id/submenu"
+          android:title="@string/submenu_title" >
+        <menu>
+            <item android:id="@+id/submenu_item1"
+                  android:title="@string/submenu_item1" />
+            <item android:id="@+id/submenu_item2"
+                  android:title="@string/submenu_item2" />
+		    <group android:id="@+id/group">
+        		<item android:id="@+id/group_item1"
+              		android:title="@string/group_item1"
+              		android:icon="@drawable/icon" />
+        		<item android:id="@+id/group_item2"
+              		android:title="@string/group_item2"
+              		android:icon="@drawable/icon" />
+    		</group>
+        </menu>
+    </item>
+</menu>

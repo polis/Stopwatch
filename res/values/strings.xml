@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Time counter</string>
+    <string name="app_name">Stopwatch</string>
+<string name="item1">Menu1</string>
+
+
+
+<string name="group_item1">Group Item 1</string>
+
+<string name="submenu_title">SubmenuTitle</string>
+<string name="submenu_item1">Sub menu item 1</string>
+
+<string name="submenu_item2">Sub menu item 2</string>
+<string name="group_item2">Group Item 2</string>
+
+
+</resources>
