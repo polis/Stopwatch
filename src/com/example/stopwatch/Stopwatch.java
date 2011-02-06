@@ -21,8 +21,8 @@ public class Stopwatch extends Activity {
 	/** Called when the activity is first created. */
 
     TextView timeText;
-    int startTime;
-	int currentTime = 0;
+    long startTime;
+	long currentTime = 0;
 	String timeString = "00:00:00";
 
 	Button button;
@@ -68,12 +68,12 @@ public class Stopwatch extends Activity {
     private Runnable mUpdateTimeTask = new Runnable() {
     	   public void run() {
     	       	
-    		   	int time = (int) (currentTime + System.currentTimeMillis() - startTime);
+    		   	long time = currentTime + System.currentTimeMillis() - startTime;
     		   	String displayTime = "";    		   	
-    	       	byte seconds = (byte) (time / 1000);
-    	       	byte minutes = (byte) (seconds / 60);
-    	       	byte millis =(byte)((time % 1000) / 10);
-    	       	seconds     = (byte) (seconds % 60);
+    	       	int seconds = (int) time / 1000;
+    	       	int minutes = (int) seconds / 60;
+    	       	int millis =(int) (time % 1000) / 10;
+    	       	seconds     = (int) seconds % 60;
            		
            		if (minutes < 10) {
            			displayTime = displayTime + "0" + minutes;
