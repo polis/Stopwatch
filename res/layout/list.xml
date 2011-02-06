@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:id="@+id/list">
+  
+  	<RelativeLayout
+		  android:orientation="vertical"
+		  android:layout_width="fill_parent"
+		  android:layout_height="fill_parent"
+		  android:scrollbars="vertical"
+		  android:id="@+id/layout_for_list">
+    
+				<TextView
+					android:id="@+id/time_label_text_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textStyle="bold"
+	  				android:textSize="20dp"
+	  				android:textColor="#096101"
+					android:layout_alignParentLeft="true"
+					/>
+    				    
+	</RelativeLayout>
+</LinearLayout>

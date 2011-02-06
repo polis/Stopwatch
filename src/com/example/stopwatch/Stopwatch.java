@@ -65,13 +65,13 @@ public class Stopwatch extends Activity {
                 
         timeText = (TextView) findViewById(R.id.chrono);
         
-        lablesView = (ListView)findViewById(R.id.list_view);
+        lablesView = (ListView)findViewById(R.id.list);
         
 //        timeLables.add("lkjlkj");
         
-        timeAdapter = new TimeAdapter(this, R.id.list_view, timeLables);
+        timeAdapter = new TimeAdapter(this, R.id.list, timeLables);
 
-//        lablesView.setAdapter(timeAdapter);
+        lablesView.setAdapter(timeAdapter);
 
         timeHandler = new Handler();
 
@@ -151,10 +151,8 @@ public class Stopwatch extends Activity {
     View.OnClickListener mPointListener = new OnClickListener() {
         public void onClick(View v) {
         	Log.d(ALARM_SERVICE, "Point taken");
-
-//        	timeLables.add(timeString);
-   			timeAdapter.notifyDataSetChanged();      		
-        	
+           	timeLables.add( (int) (timeLables.size()+1) + ".   " + timeString);
+   			timeAdapter.notifyDataSetChanged();
         }
     };
 
@@ -168,6 +166,9 @@ public class Stopwatch extends Activity {
             timeHandler.removeCallbacks(mUpdateTimeTask);
             timeText.setText("00:00:00");
             currentTime = 0;
+        	timeLables.removeAll(timeLables);
+   			timeAdapter.notifyDataSetChanged();      		
+
         }
     };
    
@@ -185,7 +186,7 @@ public class Stopwatch extends Activity {
     		View v = convertView;
     		
     		if (v == null) {
-    			v = mInflater.inflate(R.layout.list_item, null);
+    			v = mInflater.inflate(R.layout.list, null);
     		}
     		
     		/* Take an instance of your Object from taskList */
