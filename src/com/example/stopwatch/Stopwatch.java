@@ -2,16 +2,11 @@ package com.example.stopwatch;
 
 import java.util.ArrayList;
 
-//import com.example.stopwatch.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -24,12 +19,10 @@ import android.widget.Toast;
 public class Stopwatch extends Activity {
 
 	/** Called when the activity is first created. */
-//	Button start_button;
-//	Button point_button;
 
     TextView timeText;
-    long startTime;
-	long currentTime = 0;
+    int startTime;
+	int currentTime = 0;
 	String timeString = "00:00:00";
 
 	Button button;
@@ -37,8 +30,6 @@ public class Stopwatch extends Activity {
 	Handler timeHandler;
 	
 	ListView lablesView;
-//	String[] timeLables;// = {"1. 00:00:00"};
-//	ListAdapter listAdapter;
 	ArrayList<String> timeLables = new ArrayList<String>();
 	
 	TimeAdapter	timeAdapter;
@@ -67,28 +58,22 @@ public class Stopwatch extends Activity {
         
         lablesView = (ListView)findViewById(R.id.list);
         
-//        timeLables.add("lkjlkj");
-        
         timeAdapter = new TimeAdapter(this, R.id.list, timeLables);
-
         lablesView.setAdapter(timeAdapter);
 
         timeHandler = new Handler();
-
 
     }
 
     private Runnable mUpdateTimeTask = new Runnable() {
     	   public void run() {
     	       	
-    		   	long time = currentTime + System.currentTimeMillis() - startTime;
+    		   	int time = (int) (currentTime + System.currentTimeMillis() - startTime);
     		   	String displayTime = "";    		   	
-    	       	int seconds = (int) (time / 1000);
-    	       	int minutes = seconds / 60;
-    	       	int millis =(int)(time % 1000) / 10;
-    	       	seconds     = seconds % 60;
-           	   	Log.d(ALARM_SERVICE, "Time");
-           		
+    	       	byte seconds = (byte) (time / 1000);
+    	       	byte minutes = (byte) (seconds / 60);
+    	       	byte millis =(byte)((time % 1000) / 10);
+    	       	seconds     = (byte) (seconds % 60);
            		
            		if (minutes < 10) {
            			displayTime = displayTime + "0" + minutes;
@@ -117,7 +102,7 @@ public class Stopwatch extends Activity {
     
     View.OnClickListener mStartListener = new OnClickListener() {
         public void onClick(View v) {
-            startTime = System.currentTimeMillis();
+            startTime = (int)System.currentTimeMillis();
             timeHandler.postDelayed(mUpdateTimeTask,100);
        	
             button = (Button) findViewById(R.id.start_button);
@@ -142,7 +127,7 @@ public class Stopwatch extends Activity {
             button = (Button) findViewById(R.id.reset_button);
             button.setVisibility(1); 
 
-            currentTime = currentTime + System.currentTimeMillis() - startTime;
+            currentTime = (int) (currentTime + System.currentTimeMillis() - startTime);
             timeHandler.removeCallbacks(mUpdateTimeTask);
             
         }
@@ -150,7 +135,6 @@ public class Stopwatch extends Activity {
 
     View.OnClickListener mPointListener = new OnClickListener() {
         public void onClick(View v) {
-        	Log.d(ALARM_SERVICE, "Point taken");
            	timeLables.add( (int) (timeLables.size()+1) + ".   " + timeString);
    			timeAdapter.notifyDataSetChanged();
         }
@@ -203,12 +187,12 @@ public class Stopwatch extends Activity {
     }
 
 
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
+//	@Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu, menu);
+//        return true;
+//    }
 	
 }
 
