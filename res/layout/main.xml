@@ -43,7 +43,7 @@
 				android:layout_below="@id/chrono"
 				android:layout_alignParentRight="true"
 				android:layout_marginRight="20px"
-			    android:text="  Label  "
+			    android:text="    Lap    "
 			    android:enabled="false"
 			    />
 			<Button android:id="@+id/reset_button"
